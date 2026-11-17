@@ -117,3 +117,57 @@ def create_assessment(slug: str) -> AssessmentResponse:
 @app.get("/offerings/{slug}/assessments/latest", response_model=AssessmentResponse)
 def get_latest_assessment(slug: str) -> AssessmentResponse:
     return latest_assessment_payload(slug, create=False)
+
+
+# The user interface is intentionally static: FastAPI serves it, while JavaScript
+# consumes the same JSON endpoints that any other client would use.
+from importlib.metadata import PackageNotFoundError, version
+from pathlib import Path
+from fastapi.responses import FileResponse
+from fastapi.staticfiles import StaticFiles
+
+STATIC_DIRECTORY = Path(__file__).parent / "static"
+app.mount("/assets", StaticFiles(directory=STATIC_DIRECTORY), name="assets")
+
+
+@app.get("/", include_in_schema=False)
+def web_application() -> FileResponse:
+    return FileResponse(STATIC_DIRECTORY / "index.html")
+
+
+@app.get("/learning/overview")
+def learning_overview() -> dict[str, Any]:
+    def package_version(name: str) -> str:
+        try:
+            return version(name)
+        except PackageNotFoundError:
+            return "not installed"
+
+    return {
+        "database": {
+            "explanation": "SQLite stores the facts, sources, guarantees and assessments separately so each conclusion remains traceable.",
+            "tables": [
+                {"name": "offerings", "purpose": "investment terms"},
+                {"name": "guarantees", "purpose": "collateral and registration status"},
+                {"name": "evidence", "purpose": "source URL and collection date"},
+                {"name": "risk_assessments", "purpose": "historical results"},
+                {"name": "assessment_findings", "purpose": "score explanation"},
+            ],
+            "example_query": "SELECT name, benchmark, spread_annual FROM offerings ORDER BY name",
+        },
+        "api": {
+            "flow": ["browser", "FastAPI route", "risk rules", "SQLite", "JSON response"],
+            "explanation": "The route validates the HTTP contract. The risk module calculates findings. The database layer persists and retrieves data.",
+            "endpoints": [
+                {"method": "GET", "path": "/offerings", "purpose": "list available offerings"},
+                {"method": "GET", "path": "/offerings/{slug}", "purpose": "show offer, guarantees and sources"},
+                {"method": "POST", "path": "/offerings/{slug}/assessments", "purpose": "calculate and save risk evaluation"},
+            ],
+        },
+        "dependencies": [
+            {"name": "fastapi", "version": package_version("fastapi"), "purpose": "HTTP routes, validation and interactive docs"},
+            {"name": "uvicorn", "version": package_version("uvicorn"), "purpose": "development ASGI server"},
+            {"name": "pydantic", "version": package_version("pydantic"), "purpose": "response schemas and validation"},
+            {"name": "sqlite3", "version": "Python standard library", "purpose": "embedded relational database"},
+        ],
+    }

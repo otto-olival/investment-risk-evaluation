@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Investment Risk Lab</title>
+    <link rel="stylesheet" href="/assets/styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="/">Investment Risk Lab</a>
+      <nav class="mode-switch" aria-label="Modo de visualização">
+        <button class="mode active" data-mode="regular">Regular</button>
+        <button class="mode" data-mode="didactic">Didática</button>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <p class="eyebrow">DECISÕES COM EVIDÊNCIA</p>
+        <h1>Análise de risco de crédito, sem caixa-preta.</h1>
+        <p id="mode-description">Selecione uma oferta para consultar dados, evidências e sua avaliação de risco.</p>
+      </section>
+
+      <section class="workspace">
+        <aside class="offer-list" aria-label="Ofertas">
+          <div class="section-heading"><p>OFERTAS</p><span id="offer-count"></span></div>
+          <div id="offers" class="offer-buttons"></div>
+        </aside>
+        <section id="content" class="content-panel" aria-live="polite"></section>
+      </section>
+
+      <section id="didactic" class="didactic hidden">
+        <div class="learning-heading">
+          <p class="eyebrow">MODO DIDÁTICO</p>
+          <h2>Veja o que ocorre por baixo dos panos</h2>
+          <p>Estas abas mostram a mesma aplicação por perspectivas técnicas diferentes.</p>
+        </div>
+        <div class="tabs" role="tablist">
+          <button role="tab" class="tab active" data-tab="risk">Por que este score?</button>
+          <button role="tab" class="tab" data-tab="database">Base de dados</button>
+          <button role="tab" class="tab" data-tab="api">Processo FastAPI</button>
+          <button role="tab" class="tab" data-tab="dependencies">Dependências</button>
+        </div>
+        <article id="tab-content" class="lesson"></article>
+      </section>
+    </main>
+    <script src="/assets/app.js"></script>
+  </body>
+</html>
