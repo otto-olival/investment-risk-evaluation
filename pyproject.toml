@@ -1,0 +1,13 @@
+[project]
+name = "investment-risk-evaluation"
+version = "0.1.0"
+description = "API didática para avaliação explicável de risco de investimentos"
+requires-python = ">=3.12"
+dependencies = [
+  "fastapi>=0.163,<1.0",
+  "uvicorn>=0.54,<1.0",
+]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]

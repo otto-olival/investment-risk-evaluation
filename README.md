@@ -45,3 +45,13 @@ docs/                 decisões e material didático
 src/invest_risk/      código da aplicação
 tests/                testes automatizados
 ```
+
+## API FastAPI
+
+A aplicação também expõe uma API REST com FastAPI. Inicie:
+
+```powershell
+.\.venv\Scripts\uvicorn.exe src.invest_risk.api:app --reload
+```
+
+Acesse http://127.0.0.1:8000/docs para testar as rotas. Veja a arquitetura em docs/api-architecture.md.
