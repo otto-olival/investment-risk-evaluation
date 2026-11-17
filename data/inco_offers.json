@@ -1,0 +1,51 @@
+[
+  {
+    "slug": "honu-habitat",
+    "name": "CRI Honu Habitat",
+    "asset_type": "CRI",
+    "platform": "INCO",
+    "status": "open",
+    "observed_at": "2026-11-17",
+    "benchmark": "CDI",
+    "spread_annual": 4.5,
+    "term_months": 30,
+    "payment_structure": "monthly_interest_bullet_principal",
+    "parties": [
+      {"legal_name": "E C Empreendimentos e Construções LTDA", "role": "corporate_guarantor"},
+      {"legal_name": "IDO Empreendimentos Imobiliários LTDA", "role": "corporate_guarantor"},
+      {"legal_name": "Ezequiel David Câmara Dantas", "role": "individual_guarantor"},
+      {"legal_name": "Cristiana Silva Barbosa Dantas", "role": "individual_guarantor"},
+      {"legal_name": "Gisela Sofia Neves dos Santos", "role": "individual_guarantor"},
+      {"legal_name": "Rui Sá Dias dos Santos", "role": "individual_guarantor"}
+    ],
+    "guarantees": [
+      {"kind": "corporate_guarantee", "description": "Aval de E C Empreendimentos e Construções LTDA e IDO Empreendimentos Imobiliários LTDA", "registration_status": "pending"},
+      {"kind": "individual_guarantee", "description": "Aval de quatro pessoas físicas", "registration_status": "pending"},
+      {"kind": "equity_fiduciary_assignment", "description": "Alienação fiduciária das quotas da empresa", "registration_status": "pending"},
+      {"kind": "receivables_fiduciary_assignment", "description": "Cessão fiduciária de recebíveis da SPE Honu Intermares", "registration_status": "pending"},
+      {"kind": "real_estate_fiduciary_assignment", "description": "Alienação fiduciária das unidades do empreendimento", "registration_status": "pending"}
+    ],
+    "facts": {"first_platform_funding": true, "guarantee_registration_pending": true},
+    "evidence": [
+      {"source_url": "https://uploads.inco.vc/projeto_6ae3bd34206174384c992291_b89cedfea7_documento.pdf", "collected_at": "2026-11-17", "excerpt": "Prazo de 30 meses, CDI + 4,5% a.a., juros mensais e principal no final; garantias e aviso de que ainda não estavam registradas em cartório; primeira captação na INCO."}
+    ]
+  },
+  {
+    "slug": "living-coqueiros",
+    "name": "CRI Living Coqueiros",
+    "asset_type": "CRI",
+    "platform": "INCO",
+    "status": "open",
+    "observed_at": "2026-11-17",
+    "benchmark": "CDI",
+    "spread_annual": 4.0,
+    "term_months": null,
+    "payment_structure": null,
+    "parties": [],
+    "guarantees": [],
+    "facts": {},
+    "evidence": [
+      {"source_url": "https://inco.vc/", "collected_at": "2026-11-17", "excerpt": "Listagem pública identificou CRI Living Coqueiros como oferta aberta, com rentabilidade anunciada CDI + 4% a.a."}
+    ]
+  }
+]
